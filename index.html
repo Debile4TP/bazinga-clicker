@@ -31,7 +31,7 @@
             display: inline-block;
             padding: 5px 10px;
             border-radius: 20px;
-            transition-duration: 0.3s;
+            transition-duration: 0.25s;
             width: 116px;
             height: 55px;
         }
@@ -70,7 +70,10 @@ tabelka na przycisk
 
     <script>
 
-
+        //funkcja do losowania liczby: parametry min i max są wliczane w losowanie
+        function rndInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
     </script>
 </body>

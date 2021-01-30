@@ -7,48 +7,62 @@
     <style>
         @font-face {
             font-family: roboto;
-            src: url(Roboto-Thin.ttf);
+            src: url(fonts/Roboto-Thin.ttf);
         }
-        h3 {
+        @font-face {
+            font-family: immortal;
+            src: url(fonts/IMMORTAL.ttf);
+        }
+        h1 {
             color: white;
-            font-family: roboto;
+            font-family: immortal;
             font-weight: 1000;
             font-size: 80px;
             text-align: center;
         }
-        p {
-            font-family: roboto;
+        a:link, a:visited {
+            font-family: immortal;
             color: white;
-            font-weight: bold;
+            background-color: #555555;
+            font-size: 45px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition-duration: 0.3s;
+            width: 116px;
+            height: 55px;
         }
-
-        .button1 {
+        a:hover, a:active {
+            background-color: rgb(0, 100, 0);
+            font-size: 40px;
+        }
+        #btn-1 {
             border-radius: 80px;
             margin: 200px;
             height: 150px; 
             width: 150px; 
-            background-image: url(img/placeholder.png);
-            border: none;
+            background-image: url(img/placeholder150x150.png);
+            border: 3px solid #000000;
         }
     
     </style>
 </head>
-<body background="img/bckgrnd.jpg">
+<body background="img/DarkSpace.png">
     
-    <h3>
+    <h1>
         Bazinga Clicker
-    </h3>
+    </h1>
 
-    <p id="par-1">jeden</p>
-    <p id="par-2">dwa</p>
-    <p id="par-3">trzy</p>
+    <a href="sklep.html">Sklep</a>
 <!--
 tabelka na przycisk
 -->
-    <table align="center" border="0">
+    <table align="center" border="1">
         <tr>
             <td>
-                <button class="button1"></button>
+                <button id="btn-1"></button>
             </td>
         </tr>
     </table>

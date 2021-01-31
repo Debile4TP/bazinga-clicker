@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,19 @@
             font-family: roboto;
             src: url(fonts/Roboto-Thin.ttf);
         }
+
         @font-face {
             font-family: immortal;
             src: url(fonts/IMMORTAL.ttf);
         }
-        html, body {
-            cursor: /*url("img/maciek64.ico"),*/ default;
+
+        html,
+        body {
+            cursor:
+                /*url("img/maciek64.ico"),*/
+                default;
         }
+
         h1 {
             color: white;
             font-family: immortal;
@@ -24,7 +31,9 @@
             font-size: 80px;
             text-align: center;
         }
-        a:link, a:visited {
+
+        a:link,
+        a:visited {
             font-family: immortal;
             color: white;
             background-color: #555555;
@@ -38,30 +47,34 @@
             width: 116px;
             height: 55px;
         }
-        a:hover, a:active {
+
+        a:hover,
+        a:active {
             background-color: rgb(0, 100, 0);
             font-size: 40px;
         }
+
         #btn-1 {
             border-radius: 80px;
             margin: 200px;
-            height: 150px; 
-            width: 150px; 
+            height: 150px;
+            width: 150px;
             background-image: url(img/placeholder150x150.png);
             border: 3px solid #000000;
         }
     </style>
 </head>
+
 <body background="img/DarkSpace.png">
-    
+
     <h1>
         BAZINGA CLICKER
     </h1>
 
     <a href="sklep.html">Sklep</a>
-<!--
-tabelka na przycisk
--->
+    <!--
+    tabelka na przycisk
+    -->
     <table align="center" border="1">
         <tr>
             <td>
@@ -71,12 +84,20 @@ tabelka na przycisk
     </table>
 
     <script>
-
         //funkcja do losowania liczby: parametry min i max są wliczane w losowanie
         function rndInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-        //ja chce tylko sprawdzić czy to mi działa w ogóle
+
+        let coinCounter = 0
+        const btn1 = document.querySelector("#btn-1")
+
+        const coinClicker = () => coinCounter++
+
+        btn1.addEventListener("click", coinClicker)
+
+        console.log(coinCounter)
     </script>
 </body>
+
 </html>

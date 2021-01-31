@@ -92,11 +92,13 @@
         let coinCounter = 0
         const btn1 = document.querySelector("#btn-1")
 
-        const coinClicker = () => coinCounter++
+        function coinClicker () {
+            coinCounter++
+            console.log("Punkty: " + coinCounter)
+        }
 
         btn1.addEventListener("click", coinClicker)
 
-        console.log(coinCounter)
     </script>
 </body>
 

@@ -10,13 +10,21 @@
     background-color: #070719;
   }
   body {
-    background-color: #333333;
+    background-color: #555555;
     text-align: center;
     align-items: center;
   }
   table {
     text-align: center;
     border: 5px solid white;
+  }
+  #desccell {
+    width: 201px;
+    height: 201px;
+    color: white;
+    font-family: "comic sans ms";
+    font-size: 18px;
+    border: 2px;
   }
   #scorecell {
     width: 201px;
@@ -26,16 +34,29 @@
     width: 501px;
     height: 501px;
   }
+  div {
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: "comic sans ms";
+  }
 </style>
 </head>
 <body>
-  <table align="center">
+  <table align="center" border="0">
+    <tr>
+      <td id="desccell">
+        Jesteś białą kostką na dole. Z góry lecą w twoją stronę czerwone kostki. 
+        Masz 3 życia. Możesz ruszać sie w lewo i prawo na A i D i zabijać kostki 
+        strzelając na spacji. Jedno&nbsp;trafienie&nbsp;=&nbsp;1&nbsp;punkt.
+      </td>
+      <td id="canvacell" rowspan="2">
+        <canvas id = 'canvas' tabindex = '0'></canvas>
+      </td>
+    </tr>
     <tr>
       <td id="scorecell">
         <div id="divpkt"></div>
-      </td>
-      <td id="canvacell">
-        <canvas id = 'canvas' tabindex = '0'></canvas>
       </td>
     </tr>
   </table>
@@ -347,15 +368,15 @@ function draw() {
   }
 
   // keeping score
-  ctx.font = "8pt Calibri";
-  ctx.fillStyle = "white";
-  ctx.fillText(score, 5, 15); 
+  // ctx.font = "8pt Calibri";
+  // ctx.fillStyle = "white";
+  // ctx.fillText(score, 5, 15); 
 }
 
 //////////////////////CHANGES
   
   function displayPoints() {
-    document.getElementById("divpkt").innerHTML = `Wynik: ${score/10}`;
+    document.getElementById("divpkt").innerHTML = `Wynik: <br>${score/10}`;
   }
   setInterval(displayPoints, 10);
   </script>

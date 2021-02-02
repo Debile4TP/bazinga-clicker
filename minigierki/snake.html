@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bazinga Clicker</title>
     <style>
-        #canvas {
-            margin: auto;
-                display: block;
-                background-color: #070719;
-        }
         body {
             background-color: #555555;
             text-align: center;
             align-items: center;
+            font-family: "comic sans ms";
         }
         table {
             text-align: center;
@@ -23,7 +19,6 @@
             width: 201px;
             height: 201px;
             color: white;
-            font-family: "comic sans ms";
             font-size: 18px;
             border: 2px;
         }
@@ -39,7 +34,19 @@
             color: white;
             font-weight: bold;
             font-size: 50px;
+        }
+        a:hover, a:active, a:link, a:visited {
             font-family: "comic sans ms";
+            font-size: 25px;
+            height: 40px;
+            width: 220px;
+            color: white;
+            background-color: #333;
+            border-radius: 12px;
+            border: 2px solid white;
+            opacity: 0%;
+            text-decoration: none;
+            display: inline-block;
         }
     </style>
 </head>
@@ -59,28 +66,22 @@
           </td>
         </tr>
       </table>
+      <div id="divpkt2"></div>
+      <a id="link" href="../minigry.html" disabled>Wyjdź do menu</a>
     <script>
-        let funcND
-        window.onload=function() {
             canv=document.getElementById("gc");
             ctx=canv.getContext("2d");
+            let maka = setInterval(game, 140);
             document.addEventListener("keydown", keyPush);
-            if (trail[i].x !== px && trail[i].y !== py) {
-                    ctx.fillStyle = '#000000';
-                    ctx.font = '24px comic sans ms';
-                    ctx.textAlign = 'center';
-                    ctx.fillText("Wynik: " + score, canv.width / 2, canv.height / 2);
-                } else {
-                    
-                }
-            setInterval(game, 125);
-        }
+        
         px = py = 10;
         gs = tc = 20;
         ax = ay = 15;
-        xv = yv = 0;
+        xv = 0;
+        yv = -1;
         trail = [];
-        tail = 5;
+        let tail = 5;
+        let koniec = 0;
         function game() {
             px += xv;
             py += yv;
@@ -103,11 +104,11 @@
             ctx.fillStyle = "lime";
             for (let i = 0; i < trail.length; i++) {
                 ctx.fillRect(trail[i].x * gs, trail[i].y * gs, gs - 2, gs - 2)
-                if (trail[i].x == px && trail[i].y == py) {
-                    ctx.fillStyle = '#000000';
-                    ctx.font = '24px comic sans ms';
-                    ctx.textAlign = 'center';
-                    ctx.fillText("Wynik: " + score, canv.width / 2, canv.height / 2);
+                if (trail[i].x === px && trail[i].y === py) {
+                    clearInterval(maka);
+                    document.getElementById("link").disabled = false;
+                    document.getElementById("link").style.opacity = "100%";
+                    document.getElementById("divpkt2").innerHTML = `Końcowe monety: ${score * 10}`;
                 }
             }
 
@@ -121,17 +122,14 @@
                     ax = Math.floor(Math.random() * tc);
                     ay = Math.floor(Math.random() * tc);
                     score++;
-                    document.getElementById("divpkt").innerHTML = `Wynik: ${score}`;
+                    document.getElementById("divpkt").innerHTML = `Wynik: ${score * 10}`;
                 }
             
             ctx.fillStyle = "red";
             ctx.fillRect(ax * gs, ay * gs, gs - 2, gs - 2);
         }
-
-          //////////////////////////////////
-         //////////////CHANGES/////////////
-        //////////////////////////////////
-            let szczalka;
+        
+            let szczalka = 38;
             let score = 0;
 
         function keyPush(evt) {

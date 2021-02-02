@@ -7,7 +7,7 @@
     <link rel="icon" href="img/maciek64.ico">
     <style>
         
-         html , body {
+         html , body , .coincounter {
             font-family: "Comic Sans MS", "Comic Sans", cursive;
     
             cursor:
@@ -57,9 +57,25 @@
             background-image: url(img/moneta.png);
             border: 3px solid #000000;
         }
+
+        .coincounter {
+            color: #ffffff;
+            font-weight: 1000;
+            font-size: 80px;
+
+
+
+        }
+
+
+
+
+
     </style>
 </head>
 <body background="img/DarkSpace.png">
+
+    <p id="coinCounter" class="coincounter"></p>
     
     <h1>
         BAZINGA CLICKER
@@ -78,9 +94,12 @@ tabelka na przycisk
     </table>
 
     <script>
+        const coin = document.getElementById("btn-1");
+        const coinCounter = document.getElementById("coinCounter");
 
         ////////////////////////////////////bardzo ważne
-        let coins;
+        let coins =0;
+
 
         //funkcja do losowania liczby: parametry min i max są wliczane w losowanie
         function rndInt(min, max) {
@@ -90,8 +109,10 @@ tabelka na przycisk
         function capitalism() 
         {
             coins ++;
+            coinCounter.innerHTML = `${coins}`
         }
 
+        coin.addEventListener("click", capitalism);
         
 
 

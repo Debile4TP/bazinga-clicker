@@ -1,40 +1,24 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bazinga Clicker</title>
     <link rel="icon" href="img/maciek64.ico">
     <style>
-        @font-face {
-            font-family: roboto;
-            src: url(fonts/Roboto-Thin.ttf);
-        }
-
-        @font-face {
-            font-family: immortal;
-            src: url(fonts/IMMORTAL.ttf);
-        }
-
-        html,
+        
         body {
-            cursor:
-                /*url("img/maciek64.ico"),*/
-                default;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
         }
-
+ 
         h1 {
             color: white;
-            font-family: immortal;
+            
             font-weight: 1000;
             font-size: 80px;
             text-align: center;
         }
-
-        a:link,
-        a:visited {
-            font-family: immortal;
+        a:link, a:visited {
             color: white;
             background-color: #555555;
             font-size: 45px;
@@ -47,35 +31,34 @@
             width: 116px;
             height: 55px;
         }
-
-        a:hover,
-        a:active {
+        a:hover, a:active {
             background-color: rgb(0, 100, 0);
             font-size: 40px;
         }
-
         #btn-1 {
-            border-radius: 80px;
-            margin: 200px;
-            height: 150px;
-            width: 150px;
-            background-image: url(img/placeholder150x150.png);
-            border: 3px solid #000000;
+            border-radius: 185px;
+            margin: 75px;
+            height: 375px; 
+            width: 375px; 
+            background-image: url(img/maciekCoin.png);
+            background-size: 110%;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: none;
         }
     </style>
 </head>
-
 <body background="img/DarkSpace.png">
-
+    
     <h1>
         BAZINGA CLICKER
     </h1>
 
     <a href="sklep.html">Sklep</a>
-    <!--
-    tabelka na przycisk
-    -->
-    <table align="center" border="1">
+<!--
+tabelka na przycisk
+-->
+    <table align="center">
         <tr>
             <td>
                 <button id="btn-1"></button>
@@ -84,22 +67,25 @@
     </table>
 
     <script>
+
+        ////////////////////////////////////bardzo ważne
+        let coins;
+
         //funkcja do losowania liczby: parametry min i max są wliczane w losowanie
         function rndInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        let coinCounter = 0
-        const btn1 = document.querySelector("#btn-1")
-
-        function coinClicker () {
-            coinCounter++
-            console.log("Punkty: " + coinCounter)
+        function capitalism() 
+        {
+            coins ++;
         }
 
-        btn1.addEventListener("click", coinClicker)
+        
+
+
+
 
     </script>
 </body>
-
 </html>

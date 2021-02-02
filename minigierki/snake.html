@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazinga Clicker</title>
+    <style>
+        body {
+            background-color: #555555;
+            text-align: center;
+            align-items: center;
+            font-family: "comic sans ms";
+        }
+        table {
+            text-align: center;
+            border: 5px solid white;
+        }
+        #desccell {
+            width: 201px;
+            height: 201px;
+            color: white;
+            font-size: 18px;
+            border: 2px;
+        }
+        #scorecell {
+            width: 201px;
+            height: 201px;
+        }
+        #canvacell {
+            width: 501px;
+            height: 501px;
+        }
+        div {
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+        }
+        a:hover, a:active, a:link, a:visited {
+            font-family: "comic sans ms";
+            font-size: 25px;
+            height: 40px;
+            width: 220px;
+            color: white;
+            background-color: #333;
+            border-radius: 12px;
+            border: 2px solid white;
+            opacity: 0%;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <table align="center" border="0">
+        <tr>
+          <td id="desccell">
+            Po prostu Snake. Sterowanie na strzałkach.
+          </td>
+          <td id="canvacell" rowspan="2">
+            <canvas id="gc" width="400" height="400"></canvas>
+          </td>
+        </tr>
+        <tr>
+          <td id="scorecell">
+            <div id="divpkt">Wynik: 0</div>
+          </td>
+        </tr>
+      </table>
+      <div id="divpkt2"></div>
+      <a id="link" href="../minigry.html" disabled>Wyjdź do menu</a>
+    <script>
+            canv=document.getElementById("gc");
+            ctx=canv.getContext("2d");
+            let maka = setInterval(game, 140);
+            document.addEventListener("keydown", keyPush);
+        
+        px = py = 10;
+        gs = tc = 20;
+        ax = ay = 15;
+        xv = 0;
+        yv = -1;
+        trail = [];
+        let tail = 5;
+        let koniec = 0;
+        function game() {
+            px += xv;
+            py += yv;
+            if (px < 0) {
+                px = tc - 1;
+            }
+            if (px > tc - 1) {
+                px = 0;
+            }
+            if (py < 0) {
+                py = tc - 1;
+            }
+            if (py > tc - 1) {
+                py = 0;
+            }
+
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canv.width, canv.height);
+
+            ctx.fillStyle = "lime";
+            for (let i = 0; i < trail.length; i++) {
+                ctx.fillRect(trail[i].x * gs, trail[i].y * gs, gs - 2, gs - 2)
+                if (trail[i].x === px && trail[i].y === py) {
+                    clearInterval(maka);
+                    document.getElementById("link").disabled = false;
+                    document.getElementById("link").style.opacity = "100%";
+                    document.getElementById("divpkt2").innerHTML = `Końcowe monety: ${score * 10}`;
+                }
+            }
+
+            trail.push({x:px, y: py});
+            while(trail.length>tail) {
+                trail.shift();
+            }
+
+            if (ax == px && ay == py) {
+                    tail++;
+                    ax = Math.floor(Math.random() * tc);
+                    ay = Math.floor(Math.random() * tc);
+                    score++;
+                    document.getElementById("divpkt").innerHTML = `Wynik: ${score * 10}`;
+                }
+            
+            ctx.fillStyle = "red";
+            ctx.fillRect(ax * gs, ay * gs, gs - 2, gs - 2);
+        }
+        
+            let szczalka = 38;
+            let score = 0;
+
+        function keyPush(evt) {
+            switch(evt.keyCode) {
+                case 37:
+                    if (szczalka !== 39) {
+                        xv=-1;yv=0;
+                        szczalka = 37;
+                    }
+                    break;
+                case 38:
+                    if (szczalka !== 40) {
+                        xv=0;yv=-1;
+                        szczalka = 38;
+                    }
+                    break;
+                case 39:
+                    if (szczalka !== 37) {
+                        xv=1;yv=0;
+                        szczalka = 39;
+                    }
+                    break;
+                case 40:
+                    if (szczalka !== 38) {
+                        xv=0;yv=1;
+                        szczalka = 40;
+                    }
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

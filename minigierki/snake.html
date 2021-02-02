@@ -4,9 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bazinga Clicker</title>
+    <style>
+        #canvas {
+            margin: auto;
+                display: block;
+                background-color: #070719;
+        }
+        body {
+            background-color: #555555;
+            text-align: center;
+            align-items: center;
+        }
+        table {
+            text-align: center;
+            border: 5px solid white;
+        }
+        #desccell {
+            width: 201px;
+            height: 201px;
+            color: white;
+            font-family: "comic sans ms";
+            font-size: 18px;
+            border: 2px;
+        }
+        #scorecell {
+            width: 201px;
+            height: 201px;
+        }
+        #canvacell {
+            width: 501px;
+            height: 501px;
+        }
+        div {
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+            font-family: "comic sans ms";
+        }
+    </style>
 </head>
 <body>
-    <canvas id="gc" width="400" height="400"></canvas>
+    <table align="center" border="0">
+        <tr>
+          <td id="desccell">
+            Po prostu Snake. Sterowanie na strzałkach.
+          </td>
+          <td id="canvacell" rowspan="2">
+            <canvas id="gc" width="400" height="400"></canvas>
+          </td>
+        </tr>
+        <tr>
+          <td id="scorecell">
+            <div id="divpkt"></div>
+          </td>
+        </tr>
+      </table>
     <script>
         window.onload=function() {
             canv=document.getElementById("gc");
@@ -65,6 +117,7 @@
          //////////////CHANGES/////////////
         //////////////////////////////////
             let szczalka;
+            let score = 0;
 
         function keyPush(evt) {
             switch(evt.keyCode) {

@@ -61,7 +61,12 @@
             color: #ffffff;
             font-weight: 1000;
             font-size: 80px;
+            position: absolute;
+            margin-top: 10px;
         }
+
+
+
     </style>
 </head>
 <body background="img/DarkSpace.png">
@@ -90,6 +95,7 @@ tabelka na przycisk
 
         ////////////////////////////////////bardzo ważne
         let coins =0;
+        let multiplier= 1;
 
 
         //funkcja do losowania liczby: parametry min i max są wliczane w losowanie
@@ -99,7 +105,7 @@ tabelka na przycisk
 
         function capitalism() 
         {
-            coins ++;
+            coins += 1 *multiplier;
             coinCounter.innerHTML = `${coins}`
         }
 

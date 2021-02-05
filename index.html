@@ -90,30 +90,32 @@ tabelka na przycisk
     </table>
 
     <script>
+
         const coin = document.getElementById("btn-1");
         const coinCounter = document.getElementById("coinCounter");
 
-        ////////////////////////////////////bardzo ważne
-        let coins =0;
-        let multiplier= 1;
+        /////////////////////////bardzo ważne///////////////////////////
+        let multiplier = 1;
 
+        // localStorage
+        localStorage.setItem("LiczbaMonet", "0");
 
         //funkcja do losowania liczby: parametry min i max są wliczane w losowanie
         function rndInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        function capitalism() 
+        function kapitalizm() 
         {
-            coins += 1 * multiplier;
-            coinCounter.innerHTML = `${coins}`
+            if (localStorage.liczbaMonet) {
+            localStorage.liczbaMonet = Number(localStorage.liczbaMonet) + (1 * multiplier);
+            } else {
+            localStorage.liczbaMonet = 1;
+            }
+            coinCounter.innerHTML = "Monety: " + localStorage.liczbaMonet;
         }
 
-        coin.addEventListener("click", capitalism);
-        
-
-
-
+        coin.addEventListener("click", kapitalizm);
 
     </script>
 </body>
